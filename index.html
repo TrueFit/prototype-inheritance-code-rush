@@ -4,6 +4,36 @@
     <meta charset="utf-8" />
     <script type="text/javascript" src="Car.js"></script>
     <script type="text/javascript">
+      var mazda = new Car(2005, 'Mazda', '3');
+      var hyundai = new Car(2009, 'Hyundai', 'Elantra Touring');
+
+      // Note that the two objects have separate pieces of data.
+      mazda.startEngine();
+      mazda.changeOil();
+      mazda.stopEngine();
+      mazda.changeOil();
+
+      hyundai.startEngine();
+      hyundai.changeOil();
+      hyundai.stopEngine();
+      hyundai.changeOil();
+
+      // When we extend the prototype, all objects created
+      // using the Car constructor function will receive
+      // the new functionality.
+      Car.prototype.honk = function () {
+        console.log('Honked the ' + this.year + ' ' + this.make + ' ' + this.model + '!');
+      };
+      mazda.honk();
+      hyundai.honk();
+
+      // If we add the function to a single object only that object
+      // gets the new function.
+      mazda.backfire = function () {
+        console.log('The ' + this.year + ' ' + this.make + ' ' + this.model + ' backfired!');
+      }
+      mazda.backfire();
+      hyundai.backfire();
     </script>
   </body>
 </html>
